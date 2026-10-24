@@ -19,7 +19,7 @@ a{color:#7fb7ff}h3{font-size:14px;margin:10px 0 2px;color:#aaa;text-transform:up
 #filt{display:flex;gap:6px;overflow-x:auto;padding:0 8px 8px;touch-action:pan-x}#filt button{font-size:13px;padding:8px 10px;min-height:38px}
 #items{flex:1;overflow-y:auto;padding:0 8px 30px;touch-action:pan-y;-webkit-overflow-scrolling:touch}
 .it{padding:12px;border-bottom:1px solid #333;font-size:16px}.it small{color:#999;display:block;font-size:12px}
-#legend{position:fixed;right:8px;top:70px;font-size:11px;background:rgba(0,0,0,.6);padding:5px 8px;border-radius:8px;pointer-events:none}
+#legend{position:fixed;right:8px;top:104px;font-size:11px;background:rgba(0,0,0,.6);padding:5px 8px;border-radius:8px;pointer-events:none}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 </head><body>
@@ -161,7 +161,7 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js'
 const S=0.1, cv=document.getElementById('c')
 const R=new THREE.WebGLRenderer({canvas:cv,antialias:true});R.setPixelRatio(Math.min(devicePixelRatio,2))
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x1d2228)
-const cam=new THREE.PerspectiveCamera(45,1,0.1,500);cam.position.set(14,10,16)
+const cam=new THREE.PerspectiveCamera(45,1,0.1,500);cam.position.set(24,16,28)
 const ctl=new OrbitControls(cam,cv);ctl.target.set(-5,2.5,0);ctl.enableDamping=true;ctl.screenSpacePanning=true
 scene.add(new THREE.HemisphereLight(0xffffff,0x334455,1.1));const dl=new THREE.DirectionalLight(0xffffff,1.4);dl.position.set(10,20,8);scene.add(dl)
 const grid=new THREE.GridHelper(40,40,0x444444,0x2a2a2a);scene.add(grid)
@@ -199,7 +199,7 @@ function setMode(m){mode=m;document.querySelectorAll('[data-m]').forEach(b=>b.cl
  $('#mode').textContent={info:'Tap a part for numbers & specs',remove:'REMOVE mode: tap a part to pull it off',bolt:'BOLT mode: yellow = bolts. Tap to remove + see spec'}[m]}
 setMode('info')
 $('#bUndo').onclick=()=>{const a=undo.pop();if(!a)return;if(a.t=='tog')setT(a.k,a.v,false);if(a.t=='rm'){a.o.visible=true;a.o.userData.gone=false;if(a.o.userData.bolt)a.o.visible=mode=='bolt'}}
-$('#bReset').onclick=()=>{for(const k in st)setT(k,0,false);for(const m of meshes){m.visible=true;m.userData.gone=false}for(const b of bolts){b.userData.gone=false}undo.length=0;setMode('info');hide();ctl.target.set(-5,2.5,0);cam.position.set(14,10,16)}
+$('#bReset').onclick=()=>{for(const k in st)setT(k,0,false);for(const m of meshes){m.visible=true;m.userData.gone=false}for(const b of bolts){b.userData.gone=false}undo.length=0;setMode('info');hide();ctl.target.set(-5,2.5,0);cam.position.set(24,16,28)}
 let vw=0;$('#bView').onclick=()=>{const V=[[[14,10,16],'Front view'],[[22,6,0],'Side view'],[[3,14,0.1],'Top view'],[[-25,8,10],'Rear view']];vw=(vw+1)%4;cam.position.set(...V[vw][0]);$('#bView').textContent=V[(vw+1)%4][1]}
 // ---- info panel ----
 const esc=s=>String(s??'').replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))
