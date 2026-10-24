@@ -73,14 +73,14 @@ function P(id,n,sys,grp,shape,pos,col,i={}){PARTS.push(Object.assign({id,n,sys,g
 const pn=(n,d,st,src)=>({n,d,st,src});
 // ---------- BODY / FRAME (x fwd from front axle, y up, z right) ----------
 P("frame","Frame (ladder, 2 rails)","body","frame",["box",150,6,3],[-48,16,0],0x333333,{dim:{t:"Wheelbase 107.9 in (6 ft bed) / 113.9 in (7 ft bed) for 1993-97 regular cab. Model is drawn at 107.9 in.",st:"C",src:"trsDim"},tips:[{t:"111.5/117.5 in wheelbases are 1998+ Rangers - don't use 1998+ frame/body specs for a 1997.",src:"trsDim"}]});
-P("cab","Cab shell (regular cab)","body","body",["box",50,36,64],[-52,52,0],0x8a1c1c,{tips:[{t:"Overall length about 184.3 in for the short-bed regular cab (summary of spec sites, confirm).",src:"trsDim"}]});
-P("bed","Cargo box (bed)","body","body",["box",72,18,64],[-118,38,0],0x8a1c1c,{dim:{t:"6 ft or 7 ft box depending on wheelbase. Exact inside dims: unverified.",st:"U"}});
-P("hood","Hood","body","hood",["box",44,2,60],[-3,46,0],0x9a2222,{});
-P("doorL","Door, left","body","doorL",["box",40,30,2],[-50,47,-32.5],0x9a2222,{});
-P("doorR","Door, right","body","doorR",["box",40,30,2],[-50,47,32.5],0x9a2222,{});
-P("fenderL","Front fender, left","body","body",["box",50,14,4],[-2,36,-30],0x8a1c1c,{});
-P("fenderR","Front fender, right","body","body",["box",50,14,4],[-2,36,30],0x8a1c1c,{});
-P("grille","Grille / header panel","body","body",["box",3,12,52],[21,38,0],0x222222,{});
+P("cab","Cab shell (regular cab)","body","body",["box",50,36,64],[-52,52,0],0xeeeeea,{tips:[{t:"Overall length about 184.3 in for the short-bed regular cab (summary of spec sites, confirm).",src:"trsDim"}]});
+P("bed","Cargo box (bed)","body","body",["box",72,18,64],[-118,38,0],0xeeeeea,{dim:{t:"Your truck: 6 ft short bed (107.9 in wheelbase, from your photos). Exact inside dims: unverified.",st:"U"}});
+P("hood","Hood","body","hood",["box",44,2,60],[-3,46,0],0xf2f2ee,{});
+P("doorL","Door, left","body","doorL",["box",40,30,2],[-50,47,-32.5],0xf2f2ee,{});
+P("doorR","Door, right","body","doorR",["box",40,30,2],[-50,47,32.5],0xf2f2ee,{});
+P("fenderL","Front fender, left","body","body",["box",50,14,4],[-2,36,-30],0xeeeeea,{});
+P("fenderR","Front fender, right","body","body",["box",50,14,4],[-2,36,30],0xeeeeea,{});
+P("grille","Grille / header panel","body","body",["box",3,12,52],[21,38,0],0x8a8a8a,{});
 P("bumperF","Front bumper","body","body",["box",6,6,64],[26,22,0],0xbbbbbb,{});
 P("bumperR","Rear bumper","body","body",["box",6,6,64],[-157,22,0],0xbbbbbb,{});
 // ---------- ENGINE (2.3L Lima SOHC, longitudinal) ----------
@@ -112,7 +112,7 @@ P("alt","Alternator","acc","engine",["cyl",3,5,"x"],[6,30,-7],0x9a9a9a,{oem:[pn(
 P("ps","Power steering pump","acc","engine",["cyl",2.5,4,"x"],[6,33,7],0x8a8a8a,{oem:[pn("(not researched yet)","","U")]});
 P("ac","A/C compressor","acc","engine",["cyl",3,6,"x"],[5,20,-8],0x8a8a8a,{oem:[pn("(not researched yet)","","U")]});
 P("belt","Serpentine belt","acc","engine",["box",0.5,15,1],[9,27,0],0x111111,{oem:[pn("F57Z-8620-F","2.3L, power steering, WITH A/C","V","opoWP"),pn("F57Z-8620-E","2.3L, power steering, without A/C","V","opoWP"),pn("F57Z-8620-D","2.3L, manual steering","V","opoWP"),pn("F87Z-6B209-CA","Belt tensioner 2.3L/2.5L","V","fpdWP")],tips:[{t:"Three different belts depending on A/C and power steering - pick the one matching your truck.",src:"opoWP"}]});
-P("starter","Starter motor","elec","engine",["cyl",2.2,7,"x"],[-15,18,6],0x555555,{oem:[pn("SA-857-RM / F87Z-11002-AARM","Reman starter, 2.3L Ranger (stamped F87U-11000-A1A)","V","opoSt")],tips:[{t:"Catalog note 'From 03/01/1997' - check your build date on the door sticker.",src:"opoSt"}]});
+P("starter","Starter motor","elec","engine",["cyl",2.2,7,"x"],[-15,18,6],0x555555,{oem:[pn("SA-857-RM / F87Z-11002-AARM","Reman starter, 2.3L Ranger (stamped F87U-11000-A1A)","V","opoSt")],tips:[{t:"Catalog note 'From 03/01/1997'. Your truck was built 10/96, so it is likely the earlier starter. Confirm the stamped number before ordering.",src:"opoSt"}]});
 // ---------- COOLING ----------
 P("rad","Radiator","cool","front",["box",2,18,26],[17,32,0],0x7a6a40,{oem:[pn("F57Z-8005-CA","Radiator, Ranger 2.3L","V","opoWP"),pn("RS-62 / E5TZ-8100-A","Radiator cap","V","opoWP")]});
 P("hoseU","Upper radiator hose","cool","front",["cyl",0.8,10,"x"],[12,37,-2],0x111111,{oem:[pn("F67Z-8260-HA","Upper hose 2.3L (supersedes F57Z-8260-B)","V","opoWP")],dim:{t:"Package dims for F57Z-8260-B: 4.0 x 4.4 x 17.5 in, 1.1 lb (box, not hose length).",st:"V",src:"fpgHose"},tips:[{t:"F57Z-8260-D is the 3.0L hose - don't order that one.",src:"fpgHose"}]});
@@ -147,7 +147,7 @@ P("ttb","Front Twin I-Beam / TTB suspension","susp","chassis",["box",4,3,56],[0,
 P("springs","Rear leaf springs","susp","chassis",["box",50,2,3],[-108,17,-17],0x444444,{});
 P("shocks","Shock absorbers","susp","chassis",["cyl",1,12,"y"],[-100,20,17],0xcccc00,{});
 for(const [id,n,x,z] of [["wFL","Wheel/tire FL",0,-29],["wFR","Wheel/tire FR",0,29],["wRL","Wheel/tire RL",-107.9,-29],["wRR","Wheel/tire RR",-107.9,29]])
- P(id,n,"susp","wheels",["cyl",13.5,8,"z"],[x,13.5,z],0x1a1a1a,{bolts:{d:"Lug nuts 1/2-20 x5",sp:"100 ft-lb (135 Nm)",st:"C",src:"lug",n:5}});
+ P(id,n,"susp","wheels",["cyl",13.5,8,"z"],[x,13.5,z],0x1a1a1a,{dim:{t:"Your door sticker: P225/70R14SL tires on 14x6.0J steel rims, 35 psi cold front and rear.",st:"V"},bolts:{d:"Lug nuts 1/2-20 x5",sp:"100 ft-lb (135 Nm)",st:"C",src:"lug",n:5}});
 // ---------- BRAKES ----------
 P("rotorL","Front rotor/hub L","brake","wheels",["cyl",5.5,1,"z"],[0,13.5,-24],0x888888,{oem:[pn("BRRC-1233 / BRRC-100","Depends on 14 vs 15 in wheels & ABS (search summary)","U","aa")],bolts:{d:"Caliper",sp:"Slide bolts ~12-15 ft-lb; bracket ~80 ft-lb (search summary)",st:"U",src:"aa",n:2}});
 P("rotorR","Front rotor/hub R","brake","wheels",["cyl",5.5,1,"z"],[0,13.5,24],0x888888,{oem:[pn("BRRC-1233 / BRRC-100","Depends on wheels & ABS","U","aa")]});
