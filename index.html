@@ -188,7 +188,7 @@ const M={
  paint:new THREE.MeshPhysicalMaterial({color:0xf4f3ee,map:dustMap,roughness:.32,roughnessMap:roughMap,metalness:.05,normalMap:flakeN,normalScale:new THREE.Vector2(.06,.06),clearcoat:1,clearcoatRoughness:.07,sheen:0}),
  chrome:new THREE.MeshPhysicalMaterial({color:0xffffff,metalness:1,roughness:.04}),
  steel:new THREE.MeshPhysicalMaterial({color:0xc9cbcc,metalness:.6,roughness:.35,clearcoat:.5}),
- glass:new THREE.MeshPhysicalMaterial({color:0xffffff,metalness:0,roughness:0,transmission:1,thickness:.05,ior:1.52,transparent:true,opacity:.35}),
+ glass:new THREE.MeshPhysicalMaterial({color:0x8fa6ab,metalness:.1,roughness:.02,transmission:.85,thickness:.05,ior:1.52,transparent:true,opacity:.55,envMapIntensity:1.5}),
  lens:new THREE.MeshPhysicalMaterial({color:0xffffff,roughness:.02,transmission:.9,ior:1.49,thickness:.1,transparent:true,opacity:.6}),
  amber:new THREE.MeshPhysicalMaterial({color:0xff9a20,roughness:.1,transmission:.6,transparent:true,opacity:.8}),
  red:new THREE.MeshPhysicalMaterial({color:0xb01010,roughness:.15,transmission:.4,transparent:true,opacity:.9}),
@@ -325,7 +325,7 @@ for(const p of PARTS){if(p.nogeo)continue
  if(pivots[p.grp]){parent=pivots[p.grp];const pv=parent.position;o.position.set(p.pos[0]*S-pv.x,p.pos[1]*S-pv.y,p.pos[2]*S-pv.z)}else o.position.set(p.pos[0]*S,p.pos[1]*S,p.pos[2]*S)
  o.userData={pid:p.id,base:o.position.clone(),inner:p.sys=='eng'&&!['block','head','valvecover','oilpan','frontcover','crankpulley'].includes(p.id)}
  parent.add(o);meshes.push(o);byId[p.id]=o
- if(p.bolts&&p.bolts.n){const bb=new THREE.Box3().setFromObject(o);const sz=bb.getSize(new THREE.Vector3()),ctr=bb.getCenter(new THREE.Vector3());parent.worldToLocal(ctr)
+ if(p.bolts&&p.bolts.n){o.updateWorldMatrix(true,true);const bb=new THREE.Box3().setFromObject(o);const sz=bb.getSize(new THREE.Vector3()),ctr=bb.getCenter(new THREE.Vector3());parent.worldToLocal(ctr)
   const nut=/nut/i.test(p.bolts.d);const n=Math.min(p.bolts.n,16)
   for(let i=0;i<n;i++){const b=mesh(nut?NUT_G:BOLT_G,BOLT_M.clone());const t=(i+.5)/n;b.position.set(ctr.x+(t-.5)*sz.x*.9,ctr.y+sz.y/2+.02,ctr.z+(i%2?1:-1)*sz.z*.3)
    b.userData={bolt:p.id,idx:i,kind:nut?'nut':'bolt',base:b.position.clone()};b.visible=false;parent.add(b);bolts.push(b)}}
