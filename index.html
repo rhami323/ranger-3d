@@ -35,7 +35,10 @@ a{color:#7fb7ff}h3{font-size:14px;margin:10px 0 2px;color:#aaa;text-transform:up
 <script>
 // ===== DATA (all sourced; st: V = verified on a Ford parts catalog page for 1997 Ranger 2.3L, C = check: listed for Ranger but catalog note ambiguous / search-summary only, U = unverified)
 const SRC={
- fpdEng:["FordPartsDeal 1997 Ranger engine diagram (2.3L)","https://www.fordpartsdeal.com/parts-list/1997-ford-ranger/engine/engine"],
+ lemonBelt:["Service manual mirror (LEMON) 1997 Ranger 2.3L drive belt service","https://lemon-manuals.org.ua/Ford/1997/Ranger%204WD%20L4-140%202.3L%20VIN%20A%20EFI/Repair%20and%20Diagnosis/Maintenance/Drive%20Belt/Service%20and%20Repair/"],
+ lemonBeltP:["Service manual mirror (LEMON) 1997 Ranger 2.3L belt parts info","https://lemon-manuals.org.ua/Ford/1997/Ranger%204WD%20L4-140%202.3L%20VIN%20A%20EFI/Parts%20and%20Labor/Maintenance/Drive%20Belt/Parts%20Information/"],
+ apPrime:["AutoPartsPrime 1997 Ranger serpentine belts","https://www.autopartsprime.com/p/1997-ford-ranger-drive-belt"],
+  fpdEng:["FordPartsDeal 1997 Ranger engine diagram (2.3L)","https://www.fordpartsdeal.com/parts-list/1997-ford-ranger/engine/engine"],
  fpdWP:["FordPartsDeal 1997 Ranger water pump/cooling","https://www.fordpartsdeal.com/parts-list/1997-ford-ranger/belts-cooling/water-pump"],
  opoEng:["OEMPartsOnline 1997 Ranger XL 2.3L engine parts","https://ford.oempartsonline.com/v-1997-ford-ranger--xl--2-3l-l4-gas/engine--engine-parts"],
  opoWP:["OEMPartsOnline 1997 Ranger 2.3L water pump/cooling","https://ford.oempartsonline.com/v-1997-ford-ranger--xl--2-3l-l4-gas/cooling-system--water-pump"],
@@ -111,7 +114,7 @@ P("mountR","Engine support bracket (RH)","eng","engine",["box",4,4,2],[-4,22,6.5
 P("alt","Alternator","acc","engine",["cyl",3,5,"x"],[6,30,-7],0x9a9a9a,{oem:[pn("GL-8727-RM / F6UZ-10346-VARM3","Reman 130A - shown on catalog, stock 2.3L amperage not confirmed","U","opoAlt")],am:[pn("see RockAuto list","Match amp rating on your tag","U","raAlt")],tips:[{t:"Read the amp rating on your alternator's tag before ordering; catalog listing does not confirm 2.3L stock amperage.",src:"opoAlt"}]});
 P("ps","Power steering pump","acc","engine",["cyl",2.5,4,"x"],[6,33,7],0x8a8a8a,{oem:[pn("(not researched yet)","","U")]});
 P("ac","A/C compressor","acc","engine",["cyl",3,6,"x"],[5,20,-8],0x8a8a8a,{oem:[pn("(not researched yet)","","U")]});
-P("belt","Serpentine belt","acc","engine",["box",0.5,15,1],[9,27,0],0x111111,{oem:[pn("F57Z-8620-F","2.3L, power steering, WITH A/C","V","opoWP"),pn("F57Z-8620-E","2.3L, power steering, without A/C","V","opoWP"),pn("F57Z-8620-D","2.3L, manual steering","V","opoWP"),pn("F87Z-6B209-CA","Belt tensioner 2.3L/2.5L","V","fpdWP")],tips:[{t:"Three different belts depending on A/C and power steering - pick the one matching your truck.",src:"opoWP"}]});
+P("belt","Serpentine belt","acc","engine",["box",0.5,15,1],[9,27,0],0x111111,{oem:[pn("F57Z-8620-F","2.3L, power steering, WITH A/C","V","opoWP"),pn("F57Z-8620-E","2.3L, power steering, without A/C","V","opoWP"),pn("F57Z-8620-D","2.3L, manual steering","V","opoWP"),pn("F87Z-6B209-CA","Belt tensioner 2.3L/2.5L","V","fpdWP"),pn("F57Z-8620-A / -B / -C","Older numbers in the service manual (no A/C no PS / PS no A/C / with A/C); superseded by -D / -E / -F","V","lemonBeltP")],tips:[{t:"Three different belts depending on A/C and power steering - pick the one matching your truck.",src:"opoWP"},{t:"Pick by equipment: no A/C + manual steering = F57Z-8620-D; power steering, no A/C = F57Z-8620-E; with A/C = F57Z-8620-F. Check under your hood: an A/C compressor and a PS pump each add a pulley.",src:"apPrime"},{t:"The tensioner has a wear gauge: replace the belt when the pointer is outside the range. To change it, unplug the IAT sensor, remove the PCV hose and the air cleaner outlet tube, then rotate the tensioner counterclockwise. Outlet tube clamps: 18-26 in-lb.",src:"lemonBelt"}]});
 P("starter","Starter motor","elec","engine",["cyl",2.2,7,"x"],[-15,18,6],0x555555,{oem:[pn("SA-857-RM / F87Z-11002-AARM","Reman starter, 2.3L Ranger (stamped F87U-11000-A1A)","V","opoSt")],tips:[{t:"Catalog note 'From 03/01/1997'. Your truck was built 10/96, so it is likely the earlier starter. Confirm the stamped number before ordering.",src:"opoSt"}]});
 // ---------- COOLING ----------
 P("rad","Radiator","cool","front",["box",2,18,26],[17,32,0],0x7a6a40,{oem:[pn("F57Z-8005-CA","Radiator, Ranger 2.3L","V","opoWP"),pn("RS-62 / E5TZ-8100-A","Radiator cap","V","opoWP")]});
@@ -135,6 +138,8 @@ P("plugs","Spark plugs x8 (dual plug)","elec","engine",["box",16,1,14],[-6,33,0]
 P("wires","Spark plug wire set","elec","engine",["box",14,0.5,14],[-6,37,0],0x2050c0,{oem:[pn("WR-4089 / F3PZ-12259-B","Wire set, Ranger 2.3L/2.5L","V","opoIgn")]});
 P("coil","Ignition coil pack(s)","elec","engine",["box",4,3,4],[-10,38,9],0x111111,{oem:[pn("DG-530","Motorcraft coil, lists Ranger 2.3L","V","opoIgn"),pn("1U2Z-12A297-AB","Ignition module (Ranger 2.3L w/EEC)","C","opoIgn")],tips:[{t:"Test: unplug one coil pack connector while running; a big miss points to plugs/wires on the other side.",src:"trsCoil"}]});
 P("o2","Oxygen sensor","elec","engine",["cyl",0.5,3,"y"],[-12,30,10],0xbbbbbb,{oem:[pn("DY-959","Motorcraft sensor listed for Ranger 2.3L w/EEC","C","opoIgn")]});
+P("ect","Engine coolant temperature (ECT) sensor","elec","engine",["box",1,1,1],[0,0,0],0,{oem:[pn("F5AZ-12A648-A -> 3F1Z-12A648-A","ECT sensor, fits 2.3L (rectangular connector, 2 flat pins); superseded","V","fpdEng")]});
+P("iat","Intake air temperature (IAT) sensor","elec","engine",["box",1,1,1],[0,0,0],0,{oem:[pn("(not found)","","U")],tips:[{t:"Service manual: unplug the IAT connector before removing the air cleaner outlet tube for belt service.",src:"lemonBelt"}]});
 P("battery","Battery","elec","front",["box",7,8,10],[8,36,18],0x222222,{oem:[pn("(not researched yet)","","U")]});
 // ---------- TRANSMISSION ----------
 P("trans","4R44E automatic transmission","trans","trans",["box",28,12,12],[-32,22,0],0x8899aa,{oem:[pn("F77Z-7000-GARM","Reman trans assy 'Asy# 97GT-GCA, 2.3L 4x2'","C","fpgTrans")],dim:{t:"4-speed: 1st 2.47, 2nd 1.47, 3rd 1.00, 4th 0.75. Door-sticker TRANS code 'V' = 4R44E.",st:"V",src:"trsTrans"},tips:[{t:"1997 2.3L auto = 4R44E (code V). Some listings say 5R55E for 1997 - that's the 4.0L. Check your door sticker.",src:"trsA4"},{t:"An auxiliary trans cooler helps longevity on this family (A4LD/4R44E); keep fluid under ~200F.",src:"trsTrans"}]});
@@ -163,7 +168,7 @@ import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js'
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js'
 const S=0.1, cv=document.getElementById('c')
 // Bay items whose 3D position/routing could not be confirmed from a reliable source: data-only (no mesh)
-const NOGEO=new Set(['alt','ps','ac','belt','starter','hoseU','hoseL','heaterhose','wp','tstat','fan','intakeU','intakeL','airfilter','exman','injectors','plugs','wires','coil','o2','battery','mountR','oilfilter','oilpump','mc'])
+const NOGEO=new Set(['alt','ps','ac','belt','starter','hoseU','hoseL','heaterhose','wp','tstat','fan','intakeU','intakeL','airfilter','exman','injectors','plugs','wires','coil','o2','battery','mountR','oilfilter','oilpump','mc','ect','iat'])
 for(const p of PARTS)if(NOGEO.has(p.id))p.nogeo=true
 const R=new THREE.WebGLRenderer({canvas:cv,antialias:true,preserveDrawingBuffer:true});R.setPixelRatio(Math.min(devicePixelRatio,2))
 R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.0;R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap
